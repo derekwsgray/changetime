@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "ChangeTime - Datestamp Replacer",
+  "description": "Replaces UTC times with local times in (1) <td> tags that contain only dates, (2) <p> tags that start with a date followed by ' - '",
+  "version": "0.0",
+  "permissions": ["activeTab"],
+
+  "background": {
+    "scripts": ["background.js", "content.js"],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_icon": "clock.png"
+  }
+}
