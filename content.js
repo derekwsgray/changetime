@@ -14,19 +14,24 @@
     return strTime;
   }
 
-  // Table cells that contain only a date.
-  for(cell of document.getElementsByTagName('td')) {
-    const currentText = cell.textContent;
-    try {
-      const date = Date.parse(currentText);
-      if (date != NaN && date > 0) {
-        const dateObj = new Date(date);
-        cell.textContent = formatToLocalDateTime(dateObj);
+  function convertInTag(tag) {
+    for(cell of document.getElementsByTagName(tag)) {
+      const currentText = cell.textContent;
+      try {
+        const date = Date.parse(currentText);
+        if (date != NaN && date > 0) {
+          const dateObj = new Date(date);
+          cell.textContent = formatToLocalDateTime(dateObj);
+        }
+      } catch {
+        // it's ok.
       }
-    } catch {
-      // it's ok.
     }
   }
+
+  // Table cells that contain only a date.
+  convertInTag('td');
+  convertInTag('div');
 
   // Portainer Logs
   for(cell of document.getElementsByTagName('p')) {
